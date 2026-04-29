@@ -5,8 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  base: '/vegas-barbershop/',
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://vegas-barbershop.ru',
+  site: 'https://vkrasnovid.github.io',
 });
