@@ -12,7 +12,7 @@ const { title, description, ogImage } = Astro.props;
 
 const pageTitle = title || 'VEGAS Барбершоп — Энгельс | Стрижки, бритьё, уход';
 const pageDescription = description || 'Барбершоп Vegas в Энгельсе. Мужские стрижки, бритьё, уход за бородой. Запись онлайн.';
-const pageOgImage = ogImage || '/og-image.jpg';
+const pageOgImage = ogImage || '/og-image.svg';
 ---
 
 <!doctype html>
@@ -30,11 +30,14 @@ const pageOgImage = ogImage || '/og-image.jpg';
     <meta property="og:locale" content="ru_RU" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="canonical" href="https://vegas-barbershop.ru/" />
+    <link rel="canonical" href="https://vkrasnovid.github.io/vegas-barbershop/" />
 
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts (non-render-blocking) -->
+    <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
 
     <!-- Schema.org -->
     <script type="application/ld+json" set:html={getLocalBusinessSchema()} />

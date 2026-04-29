@@ -52,20 +52,28 @@
           <h3 class="font-body text-[0.75rem] font-semibold tracking-[0.08em] text-brand-gold uppercase mb-3">
             Часы работы
           </h3>
-          <div class="space-y-2">
-            <div class="flex items-center justify-between max-w-[280px]">
-              <span class="font-body text-[0.875rem] text-brand-gray-dark">Пн–Пт</span>
-              <span class="font-body text-[0.875rem] text-text-primary">09:00 – 20:00</span>
-            </div>
-            <div class="flex items-center justify-between max-w-[280px]">
-              <span class="font-body text-[0.875rem] text-brand-gray-dark">Сб</span>
-              <span class="font-body text-[0.875rem] text-text-primary">09:00 – 19:00</span>
-            </div>
-            <div class="flex items-center justify-between max-w-[280px]">
-              <span class="font-body text-[0.875rem] text-brand-gray-dark">Вс</span>
-              <span class="font-body text-[0.875rem] text-text-primary">10:00 – 18:00</span>
-            </div>
-          </div>
+          <table class="max-w-[280px]" aria-label="Часы работы">
+            <thead class="sr-only">
+              <tr>
+                <th scope="col">День недели</th>
+                <th scope="col">Часы работы</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="flex items-center justify-between py-1">
+                <th scope="row" class="font-body text-[0.875rem] font-normal text-brand-gray-dark">Пн–Пт</th>
+                <td class="font-body text-[0.875rem] text-text-primary">09:00 – 20:00</td>
+              </tr>
+              <tr class="flex items-center justify-between py-1">
+                <th scope="row" class="font-body text-[0.875rem] font-normal text-brand-gray-dark">Сб</th>
+                <td class="font-body text-[0.875rem] text-text-primary">09:00 – 19:00</td>
+              </tr>
+              <tr class="flex items-center justify-between py-1">
+                <th scope="row" class="font-body text-[0.875rem] font-normal text-brand-gray-dark">Вс</th>
+                <td class="font-body text-[0.875rem] text-text-primary">10:00 – 18:00</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <!-- Social Row -->

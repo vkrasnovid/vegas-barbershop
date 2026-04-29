@@ -130,17 +130,13 @@ import { galleryImages, galleryCategories } from './gallery.data';
           const category = btn.dataset.category || 'all';
           this.currentFilter = category;
 
-          // Update active state
+          // Update active state and aria-selected
           buttons.forEach((b) => {
-            if (b.dataset.category === 'all') {
-              b.className = category === 'all'
-                ? 'gallery-filter-btn px-4 py-2 rounded-full font-body text-[0.825rem] font-medium transition-all duration-200 cursor-pointer bg-brand-gold text-brand-black'
-                : 'gallery-filter-btn px-4 py-2 rounded-full font-body text-[0.825rem] font-medium transition-all duration-200 cursor-pointer bg-brand-surface text-brand-white hover:border hover:border-brand-gold';
-            } else {
-              b.className = b.dataset.category === category
-                ? 'gallery-filter-btn px-4 py-2 rounded-full font-body text-[0.825rem] font-medium transition-all duration-200 cursor-pointer bg-brand-gold text-brand-black'
-                : 'gallery-filter-btn px-4 py-2 rounded-full font-body text-[0.825rem] font-medium transition-all duration-200 cursor-pointer bg-brand-surface text-brand-white hover:border hover:border-brand-gold';
-            }
+            const isActive = b.dataset.category === category;
+            b.setAttribute('aria-selected', String(isActive));
+            b.className = isActive
+              ? 'gallery-filter-btn px-4 py-2 rounded-full font-body text-[0.825rem] font-medium transition-all duration-200 cursor-pointer bg-brand-gold text-brand-black'
+              : 'gallery-filter-btn px-4 py-2 rounded-full font-body text-[0.825rem] font-medium transition-all duration-200 cursor-pointer bg-brand-surface text-brand-white hover:border hover:border-brand-gold';
           });
 
           // Filter items
@@ -164,12 +160,28 @@ import { galleryImages, galleryCategories } from './gallery.data';
       this.prevBtn.addEventListener('click', () => this.prev());
       this.nextBtn.addEventListener('click', () => this.next());
 
-      // Keyboard navigation
+      // Keyboard navigation with focus trapping
       document.addEventListener('keydown', (e) => {
         if (!this.lightbox.classList.contains('hidden')) {
           if (e.key === 'Escape') this.close();
           if (e.key === 'ArrowLeft') this.prev();
           if (e.key === 'ArrowRight') this.next();
+
+          // Trap Tab focus within lightbox
+          if (e.key === 'Tab') {
+            e.preventDefault();
+            const focusable = [this.closeBtn, this.prevBtn, this.nextBtn];
+            const currentIndex = focusable.indexOf(document.activeElement as HTMLElement);
+            if (e.shiftKey) {
+              // Cycle backward
+              const prev = (currentIndex - 1 + focusable.length) % focusable.length;
+              focusable[prev].focus();
+            } else {
+              // Cycle forward
+              const next = (currentIndex + 1) % focusable.length;
+              focusable[next].focus();
+            }
+          }
         }
       });
 
@@ -197,11 +209,18 @@ import { galleryImages, galleryCategories } from './gallery.data';
       this.updateLightboxImage();
       this.lightbox.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+
+      // Focus management: trap focus inside lightbox
+      setTimeout(() => this.closeBtn.focus(), 100);
     }
 
     close() {
       this.lightbox.classList.add('hidden');
       document.body.style.overflow = '';
+
+      // Focus trapping cleanup: restore focus to the triggering element
+      const prevFocus = document.querySelector('.gallery-item:not([style*="display: none"])') as HTMLElement | null;
+      prevFocus?.focus();
     }
 
     prev() {

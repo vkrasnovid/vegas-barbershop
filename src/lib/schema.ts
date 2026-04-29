@@ -4,7 +4,7 @@ export function getLocalBusinessSchema(): string {
     '@type': 'LocalBusiness',
     name: 'VEGAS Барбершоп',
     description: 'Мужские стрижки, бритьё и уход за бородой в Энгельсе',
-    url: 'https://vegas-barbershop.ru',
+    url: 'https://vkrasnovid.github.io/vegas-barbershop',
     telephone: '+7 (8453) 56-78-90',
     email: 'info@vegas-barbershop.ru',
     address: {
@@ -35,7 +35,7 @@ export function getLocalBusinessSchema(): string {
       },
     ],
     priceRange: '₽₽',
-    image: 'https://vegas-barbershop.ru/images/hero.svg',
+    image: 'https://vkrasnovid.github.io/vegas-barbershop/images/hero.webp',
     sameAs: [
       'https://vk.com/vegasbarbershop',
       'https://instagram.com/vegas.barbershop',
