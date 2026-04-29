@@ -1,7 +1,7 @@
 {
-  "name": "density-disk",
+  "name": "vegas-barbershop",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "node": ">=22.12.0"
   },
@@ -12,6 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.1.10"
+    "@tailwindcss/vite": "^4.2.4",
+    "astro": "^5.0.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.4.2"
   }
 }

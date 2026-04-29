@@ -1,0 +1,21 @@
+---
+import BaseLayout from '@/components/layout/BaseLayout.astro';
+import BookingForm from '@/components/booking/BookingForm.astro';
+import Footer from '@/components/layout/Footer.astro';
+import Header from '@/components/layout/Header.astro';
+---
+
+<BaseLayout title="Запись онлайн — VEGAS Барбершоп" description="Запишитесь на стрижку, бритьё или уход за бородой онлайн. Быстро и удобно.">
+  <Header />
+  <main id="main-content" class="pt-16 md:pt-[72px] bg-brand-black">
+    <!-- Mini Hero for booking page -->
+    <div class="text-center pt-12 pb-4 px-4">
+      <a href="/" class="inline-flex items-center gap-1 font-body text-[0.875rem] text-brand-gray hover:text-brand-gold transition-colors no-underline mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        На главную
+      </a>
+    </div>
+    <BookingForm />
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,46 @@
+---
+import { services, categoryLabels, serviceCategoryOrder } from './services.data';
+import ServiceCard from './ServiceCard.astro';
+---
+
+<section id="services" class="section-padding bg-gradient-to-b from-brand-black to-brand-dark">
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <!-- Section Title -->
+    <div class="text-center mb-12 reveal">
+      <h2 class="font-heading text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold leading-[1.2] tracking-[-0.01em] text-brand-white">
+        Услуги и цены
+      </h2>
+      <span class="section-underline"></span>
+      <p class="font-body text-[clamp(0.875rem,1vw,1rem)] text-brand-gray max-w-[600px] mx-auto mt-4">
+        Классические стрижки, бритьё опасной бритвой и премиальный уход
+      </p>
+    </div>
+
+    <!-- Service Grid by Category -->
+    {
+      serviceCategoryOrder.map((category) => (
+        <div class="mb-10 last:mb-0">
+          <!-- Category label -->
+          <div class="flex items-center gap-4 mb-6 reveal">
+            <span class="h-px flex-1 bg-brand-gold/20"></span>
+            <h3 class="font-body text-[0.75rem] font-semibold tracking-[0.08em] text-brand-gold uppercase">
+              {categoryLabels[category]}
+            </h3>
+            <span class="h-px flex-1 bg-brand-gold/20"></span>
+          </div>
+
+          <!-- Cards Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {
+              services
+                .filter(s => s.category === category)
+                .map((service, index) => (
+                  <ServiceCard service={service} index={index} />
+                ))
+            }
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

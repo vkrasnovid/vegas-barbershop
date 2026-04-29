@@ -1,0 +1,52 @@
+---
+import type { Barber } from './team.data';
+
+export interface Props {
+  barber: Barber;
+  index: number;
+}
+
+const { barber, index } = Astro.props;
+const delayClass = `reveal-delay-${(index % 5) + 1}`;
+---
+
+<article class={`bg-white rounded-[12px] shadow-sm hover:shadow-md hover:-translate-y-1 hover:border hover:border-brand-gold transition-all duration-300 overflow-hidden reveal ${delayClass}`}>
+  <!-- Photo -->
+  <div class="relative aspect-[3/4] overflow-hidden bg-brand-gray-light/20">
+    <img
+      src={barber.photo}
+      alt={barber.name}
+      class="w-full h-full object-cover transition-transform duration-500 grayscale hover:grayscale-0"
+      loading="lazy"
+      decoding="async"
+      width="600"
+      height="800"
+    />
+  </div>
+
+  <!-- Info -->
+  <div class="p-6">
+    <h3 class="font-heading text-[clamp(1rem,1.5vw,1.125rem)] font-semibold text-text-primary leading-tight">
+      {barber.name}
+    </h3>
+    <p class="font-body text-[0.8rem] text-brand-gray mt-1">
+      {barber.specialty}
+    </p>
+    <p class="font-body text-[0.675rem] font-semibold tracking-[0.05em] text-brand-gold uppercase mt-2">
+      Опыт: {barber.experience} лет
+    </p>
+    <p class="font-body text-[0.8rem] text-text-secondary mt-2 leading-relaxed">
+      {barber.description}
+    </p>
+
+    <!-- Social icons -->
+    <div class="flex items-center gap-3 mt-4">
+      <a href={barber.instagram} class="text-brand-gray hover:text-brand-gold transition-colors" aria-label={`Инстаграм ${barber.name}`} target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href={barber.vk} class="text-brand-gray hover:text-brand-gold transition-colors" aria-label={`ВК ${barber.name}`} target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 0H8.316C3.732 0 0 3.732 0 8.316v7.368C0 20.268 3.732 24 8.316 24h7.368C20.268 24 24 20.268 24 15.684V8.316C24 3.732 20.268 0 15.684 0zm3.6 16.824h-1.512c-.552 0-.708-.408-1.92-1.62-.972-.9-1.392-1.02-1.632-1.02-.336 0-.42.084-.42.528v1.416c0 .336-.12.528-.984.528A5.622 5.622 0 0 1 9.6 14.76a11.67 11.67 0 0 1-3.384-4.896c-.18-.504-.024-.744.36-.744h1.512c.36 0 .504.168.648.528.708 2.016 1.908 3.672 2.4 3.672.18 0 .264-.096.264-.624v-2.448c-.06-.888-.504-.972-.504-1.296 0-.168.12-.24.3-.24h2.448c.264 0 .36.132.36.516v2.868c0 .264.12.372.204.372.168 0 .3-.108.6-.408 1.116-1.284 1.824-3.096 1.824-3.096.108-.24.288-.348.6-.348h1.512c.42 0 .516.216.42.516-.18.828-2.016 3.984-2.016 3.984-.156.276-.072.42 0 .624.072.204.972 1.236 1.452 1.884.396.528.744 1.116.744 1.536 0 .216-.108.348-.42.348z"/></svg>
+      </a>
+    </div>
+  </div>
+</article>
